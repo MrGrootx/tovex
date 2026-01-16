@@ -7,17 +7,31 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./types": {
       "import": "./dist/types.mjs",
       "require": "./dist/types.cjs"
     }
   },
+  "repository": "https://github.com/MrGrootx/tovex",
+  "homepage": "https://github.com/MrGrootx/tovex",
+  "bugs": "https://github.com/MrGrootx/tovex/issues",
+  "keywords": [
+    "tovex",
+    "utility",
+    "number",
+    "format"
+  ],
+  "files": [
+    "dist"
+  ],
+
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -26,7 +40,6 @@
   "peerDependencies": {
     "typescript": "^5.9.3"
   },
-  "keywords": [],
   "author": "justgroot",
   "license": "ISC"
 }

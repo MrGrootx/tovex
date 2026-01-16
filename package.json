@@ -27,7 +27,8 @@
   ],
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
 
   "scripts": {
@@ -42,5 +43,5 @@
     "typescript": "^5.9.3"
   },
   "author": "justgroot",
-  "license": "ISC"
+  "license": "MIT"
 }

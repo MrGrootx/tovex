@@ -72,4 +72,4 @@ createId("user_");
 
 ## License
 
-ISC
+MIT

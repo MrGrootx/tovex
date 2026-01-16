@@ -1,4 +1,9 @@
-src
+src/
 tsconfig.json
 tsup.config.ts
 bun.lock
+node_modules/
+*.tgz
+*.log
+.DS_Store
+*.map

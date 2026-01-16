@@ -26,12 +26,13 @@
     "format"
   ],
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
 
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/bun": "latest",

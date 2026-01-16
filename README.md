@@ -1,23 +1,11 @@
 # tovex
 
-A collection of essential developer utilities for your daily coding needs.
+Essential developer utilities for your daily coding needs.
 
 ## Installation
 
 ```bash
 npm install tovex
-```
-
-```bash
-yarn add tovex
-```
-
-```bash
-pnpm add tovex
-```
-
-```bash
-bun add tovex
 ```
 
 ## Usage
@@ -29,48 +17,59 @@ Format numbers with customizable separators and decimal handling.
 ```typescript
 import { formatNumber } from "tovex";
 
-// Basic usage
 formatNumber({ value: 1000000 });
 // "1,000,000"
 
-// With decimal places
 formatNumber({ value: 1234.567, decimalScale: 2 });
 // "1,234.57"
 
-// Custom separators
-formatNumber({ 
-  value: 1000000, 
-  thousandSeparator: " ",
-  decimalSeparator: ","
-});
-// "1 000 000"
-
-// Different grouping styles
 formatNumber({ 
   value: 100000, 
   thousandsGroupStyle: "lakh" 
 });
-// "1,00,000" (Indian numbering)
+// "1,00,000"
 ```
 
-#### Options
+**Options:** `value` (required), `decimalScale`, `thousandSeparator`, `decimalSeparator`, `thousandsGroupStyle` (`"thousand"` | `"lakh"` | `"wan"` | `"none"`), `allowNegative`, `fixedDecimalScale`
 
-- `value` (required): The number or string to format
-- `allowNegative` (optional): Allow negative numbers (default: `true`)
-- `decimalScale` (optional): Number of decimal places (default: `Infinity`)
-- `decimalSeparator` (optional): Decimal separator character (default: `"."`)
-- `fixedDecimalScale` (optional): Always show decimal places (default: `false`)
-- `thousandSeparator` (optional): Thousand separator (default: `","`)
-- `thousandsGroupStyle` (optional): Grouping style - `"thousand"`, `"lakh"`, `"wan"`, or `"none"` (default: `"thousand"`)
+### createLogger
 
-## More Utilities Coming Soon
+Configurable logger with log levels and formatting.
 
-We're continuously adding more developer utilities. Stay tuned for updates!
+```typescript
+import { createLogger } from "tovex";
+
+const logger = createLogger();
+
+logger.info("Application started");
+logger.warn("Warning message");
+logger.error("Error occurred");
+logger.debug("Debug info");
+
+// With options
+const logger = createLogger({
+  level: "warn",
+  prefix: "API",
+  json: true
+});
+```
+
+**Options:** `level` (`"debug"` | `"info"` | `"warn"` | `"error"`), `enabled`, `prefix`, `json`
+
+### createId
+
+Generate unique IDs with optional prefix.
+
+```typescript
+import { createId } from "tovex";
+
+createId();
+// "k3j9x2m1"
+
+createId("user_");
+// "user_k3j9x2m1"
+```
 
 ## License
 
 ISC
-
-## Author
-
-[justgroot](https://github.com/MrGrootx)

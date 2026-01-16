@@ -1,5 +1,23 @@
 import type { FormatNumberOptions, ThousandsGroupStyle } from "./types";
 
+function applyGrouping(
+  value: string,
+  separator: string,
+  style: ThousandsGroupStyle
+): string {
+  switch (style) {
+    case "lakh":
+      return value.replace(/(\d)(?=(\d\d)+\d$)/g, `$1${separator}`);
+
+    case "wan":
+      return value.replace(/(\d)(?=(\d{4})+$)/g, `$1${separator}`);
+
+    case "thousand":
+    default:
+      return value.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  }
+}
+
 export function formatNumber({
   value,
   allowNegative = true,
@@ -45,20 +63,6 @@ export function formatNumber({
   return isNegative && allowNegative ? `-${result}` : result ?? "";
 }
 
-function applyGrouping(
-  value: string,
-  separator: string,
-  style: ThousandsGroupStyle
-): string {
-  switch (style) {
-    case "lakh":
-      return value.replace(/(\d)(?=(\d\d)+\d$)/g, `$1${separator}`);
-
-    case "wan":
-      return value.replace(/(\d)(?=(\d{4})+$)/g, `$1${separator}`);
-
-    case "thousand":
-    default:
-      return value.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-  }
+export function createId(prefix = ""): string {
+  return `${prefix}${Math.random().toString(36).slice(2, 10)}`
 }

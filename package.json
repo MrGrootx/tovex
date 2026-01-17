@@ -1,7 +1,7 @@
 {
   "name": "tovex",
   "description": "Tovex is Utility for your projects",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -30,7 +30,6 @@
     "README.md",
     "LICENSE"
   ],
-
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "npm run build"

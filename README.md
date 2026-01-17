@@ -56,19 +56,43 @@ const logger = createLogger({
 
 **Options:** `level` (`"debug"` | `"info"` | `"warn"` | `"error"`), `enabled`, `prefix`, `json`
 
-### createId
+### generateId
 
-Generate unique IDs with optional prefix.
+Generate unique IDs with customizable options.
 
 ```typescript
-import { createId } from "tovex";
+import { generateId } from "tovex";
 
-createId();
-// "k3j9x2m1"
+// Basic usage
+generateId();
+// "a3k9x2m1"
 
-createId("user_");
-// "user_k3j9x2m1"
+// With prefix
+generateId({ prefix: "user_" });
+// "user_a3k9x2m1"
+
+// UUID format
+generateId({ format: "uuid" });
+// "a3k9x2m1-b4l0y3n2-c5m1z4o3-d6n2a5p4"
+
+// Custom length
+generateId({ length: 16 });
+// "a3k9x2m1b4l0y3n2"
+
+// Uppercase
+generateId({ uppercase: true, length: 10 });
+// "A3K9X2M1B4"
+
+// Custom alphabet (numbers only)
+generateId({ alphabet: "0123456789", length: 6 });
+// "384729"
+
+// Seeded (deterministic)
+generateId({ seed: 12345, length: 8 });
+// Always generates the same ID for the same seed
 ```
+
+**Options:** `prefix`, `length` (default: `8`), `alphabet`, `uppercase`, `secure` (default: `true`), `seed`, `format` (`"plain"` | `"uuid"`)
 
 ## License
 

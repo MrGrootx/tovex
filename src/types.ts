@@ -19,3 +19,15 @@ export interface LoggerOptions {
   prefix?: string,
   json?: boolean
 }
+
+// id
+
+export interface GenerateIdOptions {
+  prefix?: string;
+  length?: number;
+  alphabet?: string;
+  uppercase?: boolean;
+  secure?: boolean;
+  seed?: number;
+  format?: "plain" | "uuid";
+}

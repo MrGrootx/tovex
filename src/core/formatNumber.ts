@@ -1,4 +1,4 @@
-import type { FormatNumberOptions, ThousandsGroupStyle } from "./types";
+import type { FormatNumberOptions, ThousandsGroupStyle } from "../types";
 
 function applyGrouping(
   value: string,
@@ -61,8 +61,4 @@ export function formatNumber({
   }
 
   return isNegative && allowNegative ? `-${result}` : result ?? "";
-}
-
-export function createId(prefix = ""): string {
-  return `${prefix}${Math.random().toString(36).slice(2, 10)}`
 }

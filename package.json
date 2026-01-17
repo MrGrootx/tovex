@@ -1,7 +1,7 @@
 {
   "name": "tovex",
   "description": "Tovex is Utility for your projects",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

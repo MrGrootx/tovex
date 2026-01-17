@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "justgroot/tovex",
+      "name": "tovex",
       "devDependencies": {
         "@types/bun": "latest",
         "tsup": "^8.5.1",

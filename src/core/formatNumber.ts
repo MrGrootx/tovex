@@ -18,6 +18,19 @@ function applyGrouping(
   }
 }
 
+/**
+ * Formats a number with customizable decimal places, separators, and grouping styles.
+ *
+ * @param options - Formatting options object
+ * @param options.value - The number or string to format
+ * @param options.allowNegative - Whether to allow negative numbers (default: true)
+ * @param options.decimalScale - Maximum number of decimal places (default: Infinity)
+ * @param options.decimalSeparator - Character to use as decimal separator (default: ".")
+ * @param options.fixedDecimalScale - Whether to always show the specified decimal places (default: false)
+ * @param options.thousandSeparator - Character(s) to use as thousand separator, or false to disable (default: ",")
+ * @param options.thousandsGroupStyle - Grouping style: 'none', 'thousand', 'lakh', or 'wan' (default: "thousand")
+ * @returns The formatted number as a string
+ */
 export function formatNumber({
   value,
   allowNegative = true,

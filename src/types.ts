@@ -31,3 +31,11 @@ export interface GenerateIdOptions {
   seed?: number;
   format?: "plain" | "uuid";
 }
+
+
+// array
+export interface WhereOptions<T> {
+  data: T[];
+  key: keyof T;
+  value: T[keyof T];
+}

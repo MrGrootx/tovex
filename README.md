@@ -94,6 +94,57 @@ generateId({ seed: 12345, length: 8 });
 
 **Options:** `prefix`, `length` (default: `8`), `alphabet`, `uppercase`, `secure` (default: `true`), `seed`, `format` (`"plain"` | `"uuid"`)
 
+### Array helpers
+
+#### where
+
+Filter an array of objects by key and optional value.
+
+```typescript
+import { where } from "tovex";
+
+const users = [
+  { id: 1, role: "admin" },
+  { id: 2, role: "user" },
+  { id: 3, role: "admin" },
+];
+
+// All users that have a "role" key
+where({ data: users, key: "role" });
+// [{ id: 1, role: "admin" }, { id: 2, role: "user" }, { id: 3, role: "admin" }]
+
+// Only admins
+where({ data: users, key: "role", value: "admin" });
+// [{ id: 1, role: "admin" }, { id: 3, role: "admin" }]
+```
+
+**Options:**  
+- `data`: array of items  
+- `key`: property name to check  
+- `value` (optional): value to match on that key
+
+#### truncate
+
+Shorten long text and append `"..."` (or custom string).
+
+```typescript
+import { truncate } from "tovex";
+
+truncate("Hello world", 5);
+// "Hello..."
+
+truncate("Hello world", 20);
+// "Hello world" (no change)
+
+truncate("Hello world", 5, " (more)");
+// "Hello (more)"
+```
+
+**Params:**  
+- `text`: string to shorten  
+- `maxLength`: maximum length before truncation  
+- `append` (optional): string to append (default: `"..."`)
+
 ## License
 
 MIT

@@ -37,6 +37,19 @@ function createSeededRandom(seed: number) {
     };
 }
 
+/**
+ * Generates a unique ID with customizable options for prefix, length, alphabet, and format.
+ *
+ * @param options - ID generation options object
+ * @param options.prefix - Optional prefix to prepend to the generated ID (default: "")
+ * @param options.length - Length of the ID when format is "plain" (default: 8)
+ * @param options.alphabet - Characters to use for ID generation (default: alphanumeric)
+ * @param options.uppercase - Whether to convert the ID to uppercase (default: false)
+ * @param options.secure - Whether to use cryptographically secure random generation (default: true)
+ * @param options.seed - Optional seed for deterministic ID generation
+ * @param options.format - Output format: "plain" or "uuid" (default: "uuid")
+ * @returns A generated unique ID string
+ */
 export function generateId(options: GenerateIdOptions = {}): string {
     const {
       prefix = "",

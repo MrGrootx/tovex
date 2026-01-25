@@ -10,6 +10,8 @@ npm install tovex
 
 ## Usage
 
+## Number Utilities
+
 ### formatNumber
 
 Format numbers with customizable separators and decimal handling.
@@ -23,14 +25,13 @@ formatNumber({ value: 1000000 });
 formatNumber({ value: 1234.567, decimalScale: 2 });
 // "1,234.57"
 
-formatNumber({ 
-  value: 100000, 
-  thousandsGroupStyle: "lakh" 
-});
+formatNumber({ value: 100000, thousandsGroupStyle: "lakh" });
 // "1,00,000"
 ```
 
-**Options:** `value` (required), `decimalScale`, `thousandSeparator`, `decimalSeparator`, `thousandsGroupStyle` (`"thousand"` | `"lakh"` | `"wan"` | `"none"`), `allowNegative`, `fixedDecimalScale`
+
+
+## Logging
 
 ### createLogger
 
@@ -40,21 +41,14 @@ Configurable logger with log levels and formatting.
 import { createLogger } from "tovex";
 
 const logger = createLogger();
-
 logger.info("Application started");
 logger.warn("Warning message");
 logger.error("Error occurred");
 logger.debug("Debug info");
-
-// With options
-const logger = createLogger({
-  level: "warn",
-  prefix: "API",
-  json: true
-});
 ```
 
-**Options:** `level` (`"debug"` | `"info"` | `"warn"` | `"error"`), `enabled`, `prefix`, `json`
+
+## ID Utilities
 
 ### generateId
 
@@ -63,87 +57,105 @@ Generate unique IDs with customizable options.
 ```typescript
 import { generateId } from "tovex";
 
-// Basic usage
 generateId();
-// "a3k9x2m1"
-
-// With prefix
 generateId({ prefix: "user_" });
-// "user_a3k9x2m1"
-
-// UUID format
 generateId({ format: "uuid" });
-// "a3k9x2m1-b4l0y3n2-c5m1z4o3-d6n2a5p4"
-
-// Custom length
 generateId({ length: 16 });
-// "a3k9x2m1b4l0y3n2"
-
-// Uppercase
-generateId({ uppercase: true, length: 10 });
-// "A3K9X2M1B4"
-
-// Custom alphabet (numbers only)
-generateId({ alphabet: "0123456789", length: 6 });
-// "384729"
-
-// Seeded (deterministic)
-generateId({ seed: 12345, length: 8 });
-// Always generates the same ID for the same seed
 ```
 
-**Options:** `prefix`, `length` (default: `8`), `alphabet`, `uppercase`, `secure` (default: `true`), `seed`, `format` (`"plain"` | `"uuid"`)
+## Array Utilities
 
-### Array helpers
-
-#### where
+### where
 
 Filter an array of objects by key and optional value.
 
 ```typescript
 import { where } from "tovex";
 
-const users = [
-  { id: 1, role: "admin" },
-  { id: 2, role: "user" },
-  { id: 3, role: "admin" },
-];
-
-// All users that have a "role" key
-where({ data: users, key: "role" });
-// [{ id: 1, role: "admin" }, { id: 2, role: "user" }, { id: 3, role: "admin" }]
-
-// Only admins
 where({ data: users, key: "role", value: "admin" });
-// [{ id: 1, role: "admin" }, { id: 3, role: "admin" }]
 ```
 
-**Options:**  
-- `data`: array of items  
-- `key`: property name to check  
-- `value` (optional): value to match on that key
+### truncate
 
-#### truncate
-
-Shorten long text and append `"..."` (or custom string).
+Shorten long text and append "..." (or custom string).
 
 ```typescript
 import { truncate } from "tovex";
 
 truncate("Hello world", 5);
-// "Hello..."
-
-truncate("Hello world", 20);
-// "Hello world" (no change)
-
-truncate("Hello world", 5, " (more)");
-// "Hello (more)"
 ```
 
-**Params:**  
-- `text`: string to shorten  
-- `maxLength`: maximum length before truncation  
-- `append` (optional): string to append (default: `"..."`)
+### unique
+
+Get a new array with duplicate values removed.
+
+```typescript
+import { unique } from "tovex";
+
+unique([1, 1, 2, 3]);
+// [1, 2, 3]
+```
+
+
+### randomFromArray
+
+Pick a random item from an array.
+
+```typescript
+import { randomFromArray } from "tovex";
+
+randomFromArray(["apple", "banana", "orange"]);
+```
+
+
+## Async Utilities
+
+### sleep
+
+Pause execution for a given amount of time.
+
+```typescript
+import { sleep } from "tovex";
+
+await sleep(1000);
+```
+
+
+### tryCatch
+
+Safely execute an async function without repetitive try/catch blocks.
+
+```typescript
+import { tryCatch } from "tovex";
+
+const [error, result] = await tryCatch(fetchData);
+```
+
+
+## Time Utilities
+
+### formatDuration
+
+Convert seconds into a human-readable duration string.
+
+```typescript
+import { formatDuration } from "tovex";
+
+formatDuration(3661);
+```
+
+
+### timeAgo
+
+Format a date into a relative time string.
+
+```typescript
+import { timeAgo } from "tovex";
+
+timeAgo(new Date(Date.now() - 60000));
+```
+
+
 
 ## License
 

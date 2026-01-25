@@ -23,18 +23,26 @@ export function where<T>(options: WhereOptions<T>): T[] {
     });
 }
 
+/**
+ * Get a unique array of items.
+ *
+ * @param array - The array to get a unique items from
+ * @returns A unique array of items
+ */
+export function unique<T>(array: T[]): T[] {
+    return [...new Set(array)]
+}
 
 /**
- * Truncate a string and append "..." if it exceeds the given length.
+ * Get a random item from an array.
  *
- * @param text - The text to truncate
- * @param maxLength - Maximum allowed length
- * @param append - The text to append if the string exceeds the maximum length
- * @returns The truncated text
+ * @param array - The array to get a random item from
+ * @returns A random item from the array
  */
-export function truncate(text: string, maxLength: number, append: string = '...'): string {
-    if (typeof text !== 'string') return '';
-    if (text.length <= maxLength) return text;
+export function randomFromArray<T>(array: T[]): T | undefined {
+    if (!Array.isArray(array)) {
+        return undefined;
+    }
 
-    return text.slice(0, maxLength) + append;
+    return array[Math.floor(Math.random() * array.length)];
 }
